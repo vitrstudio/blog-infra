@@ -39,7 +39,7 @@ resource "aws_cloudfront_distribution" "api_cdn" {
   }
 
   aliases = [
-    "api.${var.domain_name}"
+    "api.blog.${var.domain_name}"
   ]
 
   tags = {

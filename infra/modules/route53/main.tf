@@ -24,7 +24,7 @@ resource "aws_route53_record" "www" {
 
 resource "aws_route53_record" "api" {
   zone_id = var.zone_id
-  name    = "api.${var.domain_name}"
+  name    = "api.blog.${var.domain_name}"
   type    = "A"
 
   alias {
