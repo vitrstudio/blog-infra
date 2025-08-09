@@ -1,9 +1,8 @@
 name: Deploy Terraform Infrastructure
 
 on:
-  #Remove comment in order to initiate pipeline on every push to main branch
-  #push:
-    #branches: [main]
+  push:
+    branches: [main]
 
 jobs:
   terraform:
@@ -12,14 +11,14 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: us-east-1
-      PROJECT_ID: X #Short unique id (e.g. a9191e2a)
-      AMI_ID: X #Ami for the EC2 (default ami-01f3a9a49e4032afb)
-      PROJECT_NAME: X #Name of your project (use kebab-case, e.g. bookstore-app)
-      DB_NAME: X #Name of your database (use lowercase, e.g. bookstoredb)
-      DB_USERNAME: X #Name of the database admin (use lowercase, e.g. bookstoredbadmin)
-      GITHUB_USER: X #Your GitHub username
-      DOMAIN_NAME: X #Domain name for your project (e.g. bookstore.com)
-      KEY_PAIR: X #Name of the key pair to use for the EC2 instance (e.g. bookstore for bookstore.pem)
+      PROJECT_ID: a2649dd0
+      AMI_ID: ami-01f3a9a49e4032afb
+      PROJECT_NAME: blog
+      DB_NAME: blogdb
+      DB_USERNAME: blogdbadmin
+      GITHUB_USER: jordivilagut
+      DOMAIN_NAME: vitr.studio
+      KEY_PAIR: vitrstudio
 
     steps:
       - name: Checkout repo
