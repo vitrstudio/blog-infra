@@ -34,7 +34,7 @@ resource "aws_cloudfront_distribution" "static_cdn" {
   }
 
   aliases = [
-    "blog.${var.s3_domain_name}",
+    "blog.${var.domain_name}",
     "www.blog.${var.domain_name}",
   ]
 
