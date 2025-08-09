@@ -4,7 +4,7 @@ resource "aws_cloudfront_distribution" "static_cdn" {
   default_root_object = "index.html"
 
   origin {
-    domain_name              = var.s3_domain_name
+    domain_name              = "blog.${var.s3_domain_name}"
     origin_id                = "s3-origin"
     origin_access_control_id = var.oac_id
   }
@@ -34,8 +34,8 @@ resource "aws_cloudfront_distribution" "static_cdn" {
   }
 
   aliases = [
-    var.domain_name,
-    "www.${var.domain_name}",
+    "blog.${var.s3_domain_name}",
+    "www.blog.${var.domain_name}",
   ]
 
   tags = {
