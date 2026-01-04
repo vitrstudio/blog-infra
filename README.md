@@ -1,4 +1,4 @@
-# Infra Seed
+# AWS Basic Infra
 This project automates the infrastructure deployment of the application.
 
 ## Terraform States
@@ -8,6 +8,9 @@ Three Terraform states are used, they are stored in the vitr-terraform-states S3
 - infra (ephemeral): users/jordivilagut/:project-name/infra/terraform.tfstate
 
 ## To deploy the whole infrastructure
+
+**Disclaimer:** If the domain was registered in AWS, you can skip steps 1 and 2, but you will 
+need to set the SSM variable /blog/hosted_zone_id manually in the AWS SSM Parameter Store.
 
 1. Deploy the hosted zone (just once, after that it will be persisted)
 2. Get the NS records from AWS and set them in your domain registrar

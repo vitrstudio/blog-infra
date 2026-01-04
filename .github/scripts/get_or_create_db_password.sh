@@ -1,7 +1,7 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
-if [ -z "$PROJECT_NAME" ]; then
+if [ -z "${PROJECT_NAME:-}" ]; then
   echo "Error: PROJECT_NAME is not set"
   exit 1
 fi
@@ -21,7 +21,9 @@ if [ -z "$PASSWORD" ]; then
     --name "$SECRET_NAME" \
     --value "$PASSWORD" \
     --type "SecureString" \
-    --region "$AWS_DEFAULT_REGION"
+    --region "$AWS_DEFAULT_REGION" \
+    --overwrite false
 fi
 
-echo "DB_PASSWORD=$PASSWORD" >> $GITHUB_ENV
+echo "::add-mask::$PASSWORD"
+echo "DB_PASSWORD=$PASSWORD" >> "$GITHUB_ENV"

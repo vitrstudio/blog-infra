@@ -69,7 +69,9 @@ module "rds" {
   db_password        = var.db_password
 }
 
-module "ec2_bastion" {
+// Bastion is disabled to save costs.
+// Enable in case you need direct access to DB.
+/* module "ec2_bastion" {
   source = "./modules/ec2/bastion"
   project_name         = var.project_name
   vpc_id               = module.vpc.vpc_id
@@ -77,7 +79,7 @@ module "ec2_bastion" {
   ami_id               = var.ami_id
   key_pair             = var.key_pair
   ssm_profile_name     = module.iam_ssm.ssm_profile_name
-}
+}*/
 
 module "static_website_cloudfront" {
   source            = "./modules/cloudfront/staticwebsite"
